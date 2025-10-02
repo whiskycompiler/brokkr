@@ -1,0 +1,8 @@
+[*.{cs,vb}]
+
+# CA1707: Identifiers should not contain underscores | test names
+dotnet_diagnostic.CA1707.severity = none
+
+## Generic suppressions for things that do not matter for tests
+dotnet_diagnostic.CA2201.severity = none # throwing generic Exceptions
+dotnet_diagnostic.CA1861.severity = none # inline arrays that are not static

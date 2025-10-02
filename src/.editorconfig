@@ -1,0 +1,11 @@
+[*.cs]
+
+# IDE0008: Use explicit type
+csharp_style_var_elsewhere = true
+
+# this is a library so things should not always be sealed
+resharper_class_can_be_sealed_global_highlighting = hint
+
+# S4457: Parameter validation in "async"/"await" methods should be wrapped
+# Reason: breaks usual async/await behaviour and call stack making harder to debug things 
+dotnet_diagnostic.S4457.severity = none

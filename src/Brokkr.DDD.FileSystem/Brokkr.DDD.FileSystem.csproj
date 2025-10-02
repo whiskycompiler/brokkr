@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Title>Brokkr library components to use the file system using DDD.</Title>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Brokkr.DDD\Brokkr.DDD.csproj"/>
+        <ProjectReference Include="..\Brokkr.Location\Brokkr.Location.csproj"/>
+    </ItemGroup>
+
+</Project>

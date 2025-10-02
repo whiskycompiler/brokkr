@@ -1,0 +1,29 @@
+<Project>
+    <Import Project="../Directory.Build.props"/>
+    <PropertyGroup>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <IsTestProject>true</IsTestProject>
+        <IsPackable>false</IsPackable>
+
+        <ArtifactsPath>..\..\..</ArtifactsPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit" />
+        <Using Include="FakeItEasy" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FakeItEasy"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+        <PackageReference Include="xunit"/>
+        <PackageReference Include="xunit.runner.visualstudio">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>

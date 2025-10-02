@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <Title>Brokkr library components for the DDD pattern.</Title>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\Brokkr.Core\Brokkr.Core.csproj" />
+    </ItemGroup>
+    
+</Project>

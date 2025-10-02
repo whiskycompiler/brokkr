@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <Title>Brokkr library components for safe location handling using paths and URLs.</Title>
+    </PropertyGroup>
+    
+</Project>

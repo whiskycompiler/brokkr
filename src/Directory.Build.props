@@ -1,0 +1,30 @@
+<Project>
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisLevel>8.0-recommended</AnalysisLevel>
+        
+        <IsPackable>true</IsPackable>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <BuildTime>$([System.DateTime]::Now.ToString("yyyyMMddHHmmss"))</BuildTime>
+
+        <UseArtifactsOutput>true</UseArtifactsOutput>
+        <ArtifactsPath>..\..</ArtifactsPath>
+    </PropertyGroup>
+
+
+    <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+        <VersionSuffix>$(BuildTime)</VersionSuffix>
+    </PropertyGroup>
+
+    <Target Name="AfterPack" AfterTargets="Pack" Condition=" '$(Configuration)'=='Debug' And '$(IsPackable)'=='True'">
+        <Exec Command="dotnet nuget push $(PackageOutputPath)*.nupkg --source local-feed"/>
+    </Target>
+</Project>
