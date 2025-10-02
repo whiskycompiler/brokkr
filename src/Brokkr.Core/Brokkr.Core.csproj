@@ -1,11 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Title>Brokkr library core components.</Title>
+        <Description>Brokkr library core components.</Description>
+        <AssemblyName>Brokkr.Core</AssemblyName>
+        <PackageId>$(AssemblyName)</PackageId>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="System.Linq.Async"/>
     </ItemGroup>
-    
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
 </Project>

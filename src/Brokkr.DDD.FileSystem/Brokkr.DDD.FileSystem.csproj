@@ -1,12 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Title>Brokkr library components to use the file system using DDD.</Title>
+        <Description>Brokkr library components to use the file system using DDD.</Description>
+        <AssemblyName>Brokkr.DDD.FileSystem</AssemblyName>
+        <PackageId>$(AssemblyName)</PackageId>
+        <PackageTags>ddd, saga pattern, uow, unit of work, repository, entity, change tracking, files, file system</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Brokkr.DDD\Brokkr.DDD.csproj"/>
         <ProjectReference Include="..\Brokkr.Location\Brokkr.Location.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
 </Project>

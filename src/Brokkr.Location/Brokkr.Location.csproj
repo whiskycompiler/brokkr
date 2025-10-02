@@ -1,7 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    
+
     <PropertyGroup>
-        <Title>Brokkr library components for safe location handling using paths and URLs.</Title>
+        <Description>Brokkr library components for safe location handling using paths and URLs.</Description>
+        <AssemblyName>Brokkr.Location</AssemblyName>
+        <PackageId>$(AssemblyName)</PackageId>
+        <PackageTags>location, local, remote, path, url</PackageTags>
     </PropertyGroup>
-    
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
 </Project>

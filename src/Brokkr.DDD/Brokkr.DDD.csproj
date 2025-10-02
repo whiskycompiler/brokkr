@@ -1,11 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    
+
     <PropertyGroup>
-        <Title>Brokkr library components for the DDD pattern.</Title>
+        <Description>Brokkr library components for the DDD pattern.</Description>
+        <AssemblyName>Brokkr.DDD</AssemblyName>
+        <PackageId>$(AssemblyName)</PackageId>
+        <PackageTags>ddd, saga pattern, uow, unit of work, repository, entity, change tracking</PackageTags>
     </PropertyGroup>
-    
+
     <ItemGroup>
-      <ProjectReference Include="..\Brokkr.Core\Brokkr.Core.csproj" />
+        <ProjectReference Include="..\Brokkr.Core\Brokkr.Core.csproj"/>
     </ItemGroup>
     
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
 </Project>

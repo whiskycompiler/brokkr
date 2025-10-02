@@ -1,13 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Title>Brokkr library components to support usage of the options pattern.</Title>
+        <Description>Brokkr library components to support usage of the options pattern.</Description>
+        <AssemblyName>Brokkr.OptionsHelper</AssemblyName>
+        <PackageId>$(AssemblyName)</PackageId>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <PackageReference Include="FluentValidation"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection"/>
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
 </Project>
