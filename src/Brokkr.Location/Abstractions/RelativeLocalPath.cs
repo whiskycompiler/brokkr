@@ -10,5 +10,4 @@ namespace Brokkr.Location.Abstractions;
 [JsonConverter(typeof(LocationJsonConverterFactory))]
 public abstract record RelativeLocalPath : LocalPath
 {
-    
 }

@@ -22,12 +22,18 @@ public abstract record LocationBase : ILocation
     {
         LocationString = string.Empty;
     }
-    
+
     /// <inheritdoc/>
-    public override string ToString() => LocationString;
+    public override string ToString()
+    {
+        return LocationString;
+    }
 
     /// <summary>
     /// Provides implicit conversion from <see cref="LocationBase"/> to <see cref="string"/>.
     /// </summary>
-    public static implicit operator string(LocationBase location) => location.LocationString;
+    public static implicit operator string(LocationBase location)
+    {
+        return location.LocationString;
+    }
 }

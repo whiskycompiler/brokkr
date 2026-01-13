@@ -14,6 +14,5 @@ public class StrictJsonStringEnumConverter<TEnum> : JsonStringEnumConverter<TEnu
     /// </summary>
     public StrictJsonStringEnumConverter() : base(allowIntegerValues: false)
     {
-        
     }
 }

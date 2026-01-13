@@ -59,6 +59,7 @@ public partial record Url : LocationBase, IStaticLocationFactory<Url>
             {
                 LocationString = locationString,
             };
+
             return true;
         }
 

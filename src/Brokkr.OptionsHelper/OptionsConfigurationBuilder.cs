@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 
 using FluentValidation;
 
@@ -135,6 +135,7 @@ public class OptionsConfigurationBuilder
                 {
                     exceptions.Add(new InvalidOperationException(
                         $"Could not find the IOption<>.Value property getter on resolved option type {option.GetType().FullName}!"));
+
                     continue;
                 }
 
@@ -171,24 +172,24 @@ public class OptionsConfigurationBuilder
         if (configMethod == null)
         {
             throw new NotSupportedException(
-                "Could not find the method to configure the option!\n" +
-                "Please make sure your option types are all classes and you are using .NET 6!");
+                "Could not find the method to configure the option!\nPlease make sure your option types are all classes and you are using .NET 10!");
         }
 
-        configMethod.MakeGenericMethod(optionType).Invoke(
-            null,
-            new object[]
-            {
-                _serviceCollection,
-                _configuration.GetSection(optionTypeName),
-                new Action<BinderOptions>(options => { options.BindNonPublicProperties = true; }),
-            });
+        configMethod.MakeGenericMethod(optionType)
+            .Invoke(
+                null,
+                [
+                    _serviceCollection,
+                    _configuration.GetSection(optionTypeName),
+                    new Action<BinderOptions>(options => { options.BindNonPublicProperties = true; }),
+                ]);
     }
 
     /// <summary>
     /// Configures an option like <see cref="ConfigureOption"/> but with added option validators.
     /// </summary>
-    private void ConfigureOptionWithValidation(Type optionType,
+    private void ConfigureOptionWithValidation(
+        Type optionType,
         IServiceProvider serviceProvider,
         List<Exception> setupExceptions)
     {
@@ -210,6 +211,7 @@ public class OptionsConfigurationBuilder
         var validatorConstructorInfo = typeof(FluentOptionValidator<>)
             .MakeGenericType(optionType)
             .GetConstructor([fluentValidator.GetType()]);
+
         if (validatorConstructorInfo == null)
         {
             throw new NotImplementedException(
@@ -222,7 +224,6 @@ public class OptionsConfigurationBuilder
         // register validator
         _serviceCollection.AddSingleton(typeof(IValidateOptions<>).MakeGenericType(optionType), validator);
     }
-
 
     /// <summary>
     /// Determines the fluent validator for a given type and gets an instance from the given service provider.
@@ -238,6 +239,7 @@ public class OptionsConfigurationBuilder
             .FindValidatorsInAssemblyContaining(optionType)
             .Where(w => w.InterfaceType.GenericTypeArguments.Contains(optionType))
             .ToArray();
+
         if (validators.Length != 1)
         {
             throw new InvalidOperationException(
@@ -267,11 +269,7 @@ public class OptionsConfigurationBuilder
                 BindingFlags.Static | BindingFlags.Public,
                 null,
                 CallingConventions.Any,
-                [
-                    typeof(IServiceCollection),
-                    typeof(IConfiguration),
-                    typeof(Action<BinderOptions>),
-                ],
+                [typeof(IServiceCollection), typeof(IConfiguration), typeof(Action<BinderOptions>)],
                 null);
     }
 }

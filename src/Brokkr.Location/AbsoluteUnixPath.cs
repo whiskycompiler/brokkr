@@ -17,7 +17,7 @@ public partial record AbsoluteUnixPath : AbsoluteLocalPath, IStaticLocationFacto
     /// Regex for detecting absolute Unix paths.
     /// </summary>
     [GeneratedRegex(
-        """^(/(?:[\p{L}\p{N}._\s()=-]+|\.{1,2})(?:/(?:[\p{L}\p{N}._\s()=-]+|\.{1,2}))*/?|/)$""",
+        """^(/(?:[^/\0\p{C}]+|\.{1,2})(?:/(?:[^/\0\p{C}]+|\.{1,2}))*/?|/)$""",
         RegexOptions.Singleline)]
     private static partial Regex AbsoluteUnixPathRegex();
 
@@ -59,6 +59,7 @@ public partial record AbsoluteUnixPath : AbsoluteLocalPath, IStaticLocationFacto
             {
                 LocationString = locationString,
             };
+
             return true;
         }
 

@@ -12,7 +12,9 @@ public static class SharedLocationTestData
         new("..", typeof(IndeterminateRelativePath)),
         new("bar", typeof(IndeterminateRelativePath)),
         new("bar.txt", typeof(IndeterminateRelativePath)),
+        new("[]", typeof(IndeterminateRelativePath)),
         new(".config", typeof(IndeterminateRelativePath)),
+        new("(foo) [bar]something.md", typeof(IndeterminateRelativePath)),
     ];
 
     public static readonly TestRecord[] RelativeUnixPaths =
@@ -24,9 +26,14 @@ public static class SharedLocationTestData
         new("../../foo_(1).png", typeof(RelativeUnixPath)),
         new("../test/foo.md", typeof(RelativeUnixPath)),
         new("../test=/foo.md", typeof(RelativeUnixPath)),
+        new("../test&/foo.md", typeof(RelativeUnixPath)),
+        new("../test-/foo.md", typeof(RelativeUnixPath)),
         new("abc/foo/", typeof(RelativeUnixPath)),
         new("abc foo/", typeof(RelativeUnixPath)),
         new("abc/test.md", typeof(RelativeUnixPath)),
+        new("abc/test's new.png", typeof(RelativeUnixPath)),
+        new("[some]abc/[]", typeof(RelativeUnixPath)),
+        new("abc/(foo) [bar]something.md", typeof(RelativeUnixPath)),
         new("abc/.md", typeof(RelativeUnixPath)),
         new("abc/.config/test.md", typeof(RelativeUnixPath)),
         new(".config/test.md", typeof(RelativeUnixPath)),
@@ -35,7 +42,7 @@ public static class SharedLocationTestData
     public static readonly TestRecord[] InvalidRelativeUnixPaths =
     [
         // empty directory names
-        new("foo//something.md", typeof(void)),
+        new("foo//something.md", typeof(void)), new(".//", typeof(void)),
         new(".//", typeof(void)),
     ];
 
@@ -43,11 +50,16 @@ public static class SharedLocationTestData
     [
         new("/foo/bar/something.md", typeof(AbsoluteUnixPath)),
         new("/foo/bar/some thing.md", typeof(AbsoluteUnixPath)),
-        new("/foo bar/some thing.md", typeof(AbsoluteUnixPath)),
+        new("/foo & bar/some&thing.md", typeof(AbsoluteUnixPath)),
+        new("/foo - bar/some-thing.md", typeof(AbsoluteUnixPath)),
         new("/foo bar/some (1).png", typeof(AbsoluteUnixPath)),
         new("/foo=bar/some.png", typeof(AbsoluteUnixPath)),
+        new("/foo/bar/(foo) [bar]something.md", typeof(AbsoluteUnixPath)),
+        new("/(foo) [bar]something.md", typeof(AbsoluteUnixPath)),
         new("/foo/bar/", typeof(AbsoluteUnixPath)),
         new("/foo/bar", typeof(AbsoluteUnixPath)),
+        new("/foo/bar's file", typeof(AbsoluteUnixPath)),
+        new("/[foo]/[]", typeof(AbsoluteUnixPath)),
         new("/foo/.config/bar", typeof(AbsoluteUnixPath)),
         new("/foo/.config/bar.mp4", typeof(AbsoluteUnixPath)),
         new("/foo/.dat", typeof(AbsoluteUnixPath)),
@@ -57,7 +69,7 @@ public static class SharedLocationTestData
     public static readonly TestRecord[] InvalidAbsoluteUnixPaths =
     [
         // empty directory names
-        new("/foo//something.md", typeof(void)),
+        new("/foo//something.md", typeof(void)), new("//", typeof(void)),
         new("//", typeof(void)),
     ];
 
@@ -67,6 +79,8 @@ public static class SharedLocationTestData
         new("D:\\foo\\", typeof(AbsoluteWindowsPath)),
         new("D:\\foo\\bar.txt", typeof(AbsoluteWindowsPath)),
         new("f:\\text.dat", typeof(AbsoluteWindowsPath)),
+        new("f:\\(foo) [bar]something.md", typeof(AbsoluteWindowsPath)),
+        new("f:\\bar\\(foo) [bar]something.md", typeof(AbsoluteWindowsPath)),
     ];
 
     public static readonly TestRecord[] RelativeWindowsPaths =
@@ -77,6 +91,7 @@ public static class SharedLocationTestData
         new("..\\..\\foo.bar", typeof(RelativeWindowsPath)),
         new("abc\\foo\\", typeof(RelativeWindowsPath)),
         new("abc\\test.md", typeof(RelativeWindowsPath)),
+        new("abc\\(foo) [bar]something.md", typeof(RelativeWindowsPath)),
     ];
 
     public static readonly TestRecord[] Urls =

@@ -17,7 +17,7 @@ public partial record RelativeUnixPath : RelativeLocalPath, IStaticLocationFacto
     /// Regex for detecting relative Unix paths.
     /// </summary>
     [GeneratedRegex(
-        @"^(?:\.\.?\/|[^\/]+\/)*(?:[^\/]+(?:\.[\p{L}\p{N}]+)?)?$",
+        @"^(?:\.\.?\/|[^/\0\p{C}]+\/)*(?:[^/\0\p{C}]+)?$",
         RegexOptions.Singleline)]
     private static partial Regex RelativeUnixPathRegex();
 
@@ -25,7 +25,7 @@ public partial record RelativeUnixPath : RelativeLocalPath, IStaticLocationFacto
     /// Regex for detecting relative Unix paths but only if they do not contain a backslash.
     /// </summary>
     [GeneratedRegex(
-        """^(?:\.\.?\/|[^\/\\]+\/)*(?:[^\/\\]+(?:\.[\p{L}\p{N}]+)?)?$""",
+        """^(?:\.\.?\/|[^/\0\\\p{C}]+\/)*(?:[^/\0\\\p{C}]+)?$""",
         RegexOptions.Singleline)]
     private static partial Regex RelativeUnixPathRegexWithoutBackslash();
 

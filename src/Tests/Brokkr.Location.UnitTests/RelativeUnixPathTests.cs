@@ -65,14 +65,14 @@ public class RelativeUnixPathTests
         Assert.False(result);
         Assert.Null(location);
     }
-    
+
     [Theory]
     [MemberData(nameof(RelativeUnixLocationTestData.LimitedValidLocations),
         MemberType = typeof(RelativeUnixLocationTestData))]
     public void JsonConversion_GivenValidLocation_Succeeds(string locationString)
     {
         var location = new RelativeUnixPath(locationString);
-        
+
         // act
         var json = JsonSerializer.Serialize(location);
         var result = JsonSerializer.Deserialize<RelativeUnixPath>(json);
@@ -82,7 +82,7 @@ public class RelativeUnixPathTests
         Assert.NotNull(result);
         Assert.Equal(locationString, result.LocationString);
     }
-    
+
     [Theory]
     [MemberData(nameof(RelativeUnixLocationTestData.ExtendedInvalidLocations),
         MemberType = typeof(RelativeUnixLocationTestData))]
@@ -90,7 +90,11 @@ public class RelativeUnixPathTests
     {
         // act
         var json = JsonSerializer.Serialize(locationString);
-        void Act() => JsonSerializer.Deserialize<RelativeUnixPath>(json);
+
+        void Act()
+        {
+            JsonSerializer.Deserialize<RelativeUnixPath>(json);
+        }
 
         // assert
         Assert.Throws<JsonException>(Act);
@@ -99,44 +103,32 @@ public class RelativeUnixPathTests
 
 public static class RelativeUnixLocationTestData
 {
-    public static IEnumerable<object[]> AllValidLocations =>
-        SharedLocationTestData.IndeterminateRelativePaths
+    public static IEnumerable<object[]> AllValidLocations
+        => SharedLocationTestData.IndeterminateRelativePaths
             .Concat(SharedLocationTestData.RelativeUnixPaths)
             .Concat(SharedLocationTestData.AbsoluteWindowsPaths) // theoretically valid file names
             .Concat(SharedLocationTestData.RelativeWindowsPaths) // theoretically valid file names
-            .Select(s => new object[]
-            {
-                s.LocationString,
-            });
+            .Select(s => new object[] { s.LocationString });
 
-    public static IEnumerable<object[]> LimitedValidLocations =>
-        SharedLocationTestData.IndeterminateRelativePaths
+    public static IEnumerable<object[]> LimitedValidLocations
+        => SharedLocationTestData.IndeterminateRelativePaths
             .Concat(SharedLocationTestData.RelativeUnixPaths)
-            .Select(s => new object[]
-            {
-                s.LocationString,
-            });
+            .Select(s => new object[] { s.LocationString });
 
-    public static IEnumerable<object[]> LimitedInvalidLocations =>
-        SharedLocationTestData.AbsoluteUnixPaths
+    public static IEnumerable<object[]> LimitedInvalidLocations
+        => SharedLocationTestData.AbsoluteUnixPaths
             .Concat(SharedLocationTestData.InvalidAbsoluteUnixPaths)
             .Concat(SharedLocationTestData.InvalidRelativeUnixPaths)
             .Concat(SharedLocationTestData.Urls)
             // windows paths are theoretically valid file names
-            .Select(s => new object[]
-            {
-                s.LocationString,
-            });
+            .Select(s => new object[] { s.LocationString });
 
-    public static IEnumerable<object[]> ExtendedInvalidLocations =>
-        SharedLocationTestData.AbsoluteUnixPaths
+    public static IEnumerable<object[]> ExtendedInvalidLocations
+        => SharedLocationTestData.AbsoluteUnixPaths
             .Concat(SharedLocationTestData.InvalidAbsoluteUnixPaths)
             .Concat(SharedLocationTestData.InvalidRelativeUnixPaths)
             .Concat(SharedLocationTestData.AbsoluteWindowsPaths)
             .Concat(SharedLocationTestData.RelativeWindowsPaths)
             .Concat(SharedLocationTestData.Urls)
-            .Select(s => new object[]
-            {
-                s.LocationString,
-            });
+            .Select(s => new object[] { s.LocationString });
 }

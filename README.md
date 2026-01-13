@@ -1,4 +1,7 @@
 # Brokkr
+
+[![NuGet version (Brokker.Core)](https://img.shields.io/nuget/v/Brokkr.Core.svg)](https://www.nuget.org/packages/Brokkr.Core/)
+
 **Brokkr is a .NET library with useful tools to build applications**
 
 <b>Current State: BETA</b>
@@ -6,33 +9,41 @@
 ## 📦 Library Components
 
 ### 📍 Brokkr.Location
+
 Strongly-typed location handling for file paths, URLs, and other location types.
 
 **Features:**
+
 - Cross-platform path handling (Windows/Unix)
 - URL parsing and manipulation
 - Type-safe location creation and validation
 - JSON serialization support
 
 ### 🏛️ Brokkr.DDD
+
 Domain-Driven Design patterns and building blocks.
 
 **Features:**
+
 - Unit of Work pattern implementation
 - Saga pattern support for complex workflows
 - Change tracking capabilities
 
 ### ⚙️ Brokkr.OptionsHelper
+
 Simplified configuration and options validation for .NET applications.
 
 **Features:**
+
 - Simplified usage for IOptions configuration
 - Options validation using FluentValidation
 
 ### 💾 Brokkr.DDD.FileSystem
+
 File system-based storage implementation for DDD patterns.
 
 **Features:**
+
 - JSON-based entity storage (single and multi-file)
 - Unit of Work pattern for file operations
 

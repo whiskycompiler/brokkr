@@ -9,8 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Using Include="Xunit" />
-        <Using Include="FakeItEasy" />
+        <Using Include="Xunit"/>
+        <Using Include="FakeItEasy"/>
     </ItemGroup>
 
     <ItemGroup>

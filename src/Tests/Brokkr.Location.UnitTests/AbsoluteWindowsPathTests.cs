@@ -30,14 +30,14 @@ public class AbsoluteWindowsPathTests
         Assert.False(result);
         Assert.Null(location);
     }
-    
+
     [Theory]
     [MemberData(nameof(AbsoluteWindowsLocationTestData.AllValidLocations),
         MemberType = typeof(AbsoluteWindowsLocationTestData))]
     public void JsonConversion_GivenValidLocation_Succeeds(string locationString)
     {
         var location = new AbsoluteWindowsPath(locationString);
-        
+
         // act
         var json = JsonSerializer.Serialize(location);
         var result = JsonSerializer.Deserialize<AbsoluteWindowsPath>(json);
@@ -47,7 +47,7 @@ public class AbsoluteWindowsPathTests
         Assert.NotNull(result);
         Assert.Equal(locationString, result.LocationString);
     }
-    
+
     [Theory]
     [MemberData(nameof(AbsoluteWindowsLocationTestData.AllInvalidLocations),
         MemberType = typeof(AbsoluteWindowsLocationTestData))]
@@ -55,7 +55,11 @@ public class AbsoluteWindowsPathTests
     {
         // act
         var json = JsonSerializer.Serialize(locationString);
-        void Act() => JsonSerializer.Deserialize<AbsoluteWindowsPath>(json);
+
+        void Act()
+        {
+            JsonSerializer.Deserialize<AbsoluteWindowsPath>(json);
+        }
 
         // assert
         Assert.Throws<JsonException>(Act);
@@ -64,22 +68,16 @@ public class AbsoluteWindowsPathTests
 
 public static class AbsoluteWindowsLocationTestData
 {
-    public static IEnumerable<object[]> AllValidLocations =>
-        SharedLocationTestData.AbsoluteWindowsPaths
-            .Select(s => new object[]
-            {
-                s.LocationString,
-            });
+    public static IEnumerable<object[]> AllValidLocations
+        => SharedLocationTestData.AbsoluteWindowsPaths
+            .Select(s => new object[] { s.LocationString });
 
-    public static IEnumerable<object[]> AllInvalidLocations =>
-        SharedLocationTestData.RelativeWindowsPaths
+    public static IEnumerable<object[]> AllInvalidLocations
+        => SharedLocationTestData.RelativeWindowsPaths
             .Concat(SharedLocationTestData.InvalidAbsoluteUnixPaths)
             .Concat(SharedLocationTestData.InvalidRelativeUnixPaths)
             .Concat(SharedLocationTestData.AbsoluteUnixPaths)
             .Concat(SharedLocationTestData.RelativeUnixPaths)
             .Concat(SharedLocationTestData.Urls)
-            .Select(s => new object[]
-            {
-                s.LocationString,
-            });
+            .Select(s => new object[] { s.LocationString });
 }

@@ -18,7 +18,7 @@ public partial record IndeterminateRelativePath : RelativeLocalPath, IStaticLoca
     /// Regex for detecting indeterminate paths.
     /// </summary>
     [GeneratedRegex(
-        """^(?!.*[\\/]|[A-Za-z]:)[\p{L}\p{N}._-]+(?:[\s\p{L}\p{N}._-]+)*$""",
+        """^(?!.*[\\/]|[A-Za-z]:)[\p{L}\p{N}._\-\(\)\[\]]+(?:[\s\p{L}\p{N}._\-\(\)\[\]]+)*$""",
         RegexOptions.Singleline)]
     private static partial Regex IndeterminateRelativePathRegex();
 
@@ -38,7 +38,7 @@ public partial record IndeterminateRelativePath : RelativeLocalPath, IStaticLoca
 
         LocationString = locationString;
     }
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="IndeterminateRelativePath"/> class.
     /// </summary>
@@ -60,13 +60,14 @@ public partial record IndeterminateRelativePath : RelativeLocalPath, IStaticLoca
             {
                 LocationString = locationString,
             };
+
             return true;
         }
 
         location = null;
         return false;
     }
-    
+
     /// <inheritdoc/>
     public override IndeterminateRelativePath Combine(string relativePath)
     {

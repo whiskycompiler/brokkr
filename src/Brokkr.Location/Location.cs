@@ -14,7 +14,8 @@ public static class Location
     /// <summary>
     /// Dictionary of JsonConverters to be automatically used for child classes of <see cref="LocationBase"/>.
     /// </summary>
-    public static Dictionary<Type, JsonConverter> JsonConverters { get; } = new() {
+    public static Dictionary<Type, JsonConverter> JsonConverters { get; } = new()
+    {
         [typeof(LocationBase)] = new LocationBaseJsonConverter(),
         [typeof(LocalPath)] = new LocalPathJsonConverter(),
         [typeof(AbsoluteLocalPath)] = new AbsoluteLocalPathJsonConverter(),
@@ -26,12 +27,17 @@ public static class Location
         [typeof(IndeterminateRelativePath)] = new ConcreteLocationJsonConverter<IndeterminateRelativePath>(),
         [typeof(Url)] = new ConcreteLocationJsonConverter<Url>(),
     };
-    
+
     /// <summary>
     /// Gets or sets the location factory used to create locations.
     /// </summary>
     public static ILocationFactory LocationFactory { get; set; } = new DefaultLocationFactory();
 
+    /// <summary>
+    /// Gets or sets the location factory used to create local path locations.
+    /// </summary>
+    public static ILocationFactory LocalPathLocationFactory { get; set; } = new LocalPathLocationFactory();
+    
     /// <summary>
     /// Creates a location from the specified location string.
     /// </summary>

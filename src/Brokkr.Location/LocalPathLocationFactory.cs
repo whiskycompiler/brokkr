@@ -5,9 +5,9 @@ using Brokkr.Location.Abstractions;
 namespace Brokkr.Location;
 
 /// <summary>
-/// Default implementation of the location factory.
+/// Location factory supporting only local paths.
 /// </summary>
-public class DefaultLocationFactory : ILocationFactory
+public class LocalPathLocationFactory : ILocationFactory
 {
     /// <inheritdoc/>
     public ILocation Create(string locationString)
@@ -31,12 +31,6 @@ public class DefaultLocationFactory : ILocationFactory
         //
         // Starting here are obvious locations which should not cause any differentiation problems
         //
-
-        if (Url.TryCreate(locationString, out var url))
-        {
-            location = url;
-            return true;
-        }
 
         if (AbsoluteWindowsPath.TryCreate(locationString, out var absoluteWindowsPath))
         {

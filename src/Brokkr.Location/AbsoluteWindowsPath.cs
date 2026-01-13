@@ -57,13 +57,14 @@ public partial record AbsoluteWindowsPath : AbsoluteLocalPath, IStaticLocationFa
             {
                 LocationString = locationString,
             };
+
             return true;
         }
 
         location = null;
         return false;
     }
-    
+
     /// <inheritdoc/>
     public override AbsoluteWindowsPath Combine(string relativePath)
     {
