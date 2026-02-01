@@ -1,28 +1,30 @@
 <Project>
-  <PropertyGroup>
-    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-  </PropertyGroup>
-  <!-- Declare packages included in every project -->
-  <ItemGroup>
-    <GlobalPackageReference Include="SonarAnalyzer.CSharp" Version="10.18.0.131500">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </GlobalPackageReference>
-  </ItemGroup>
-  <!-- Declare package versions to be used by all projects in case they reference it -->
-  <ItemGroup>
-    <PackageVersion Include="coverlet.collector" Version="6.0.4" />
-    <PackageVersion Include="FakeItEasy" Version="9.0.0" />
-    <PackageVersion Include="FluentValidation" Version="12.1.1" />
-    <PackageVersion Include="JetBrains.Annotations" Version="2025.2.4" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-    <PackageVersion Include="xunit" Version="2.9.3" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageVersion>
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
-    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.2" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.2" />
-  </ItemGroup>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+    <!-- Declare packages included in every project -->
+    <ItemGroup>
+        <GlobalPackageReference Include="SonarAnalyzer.CSharp" Version="10.18.0.131500">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </GlobalPackageReference>
+    </ItemGroup>
+    <!-- Declare package versions to be used by all projects in case they reference it -->
+    <ItemGroup>
+        <PackageVersion Include="coverlet.collector" Version="6.0.4"/>
+        <PackageVersion Include="FakeItEasy" Version="9.0.0"/>
+        <PackageVersion Include="FluentValidation" Version="12.1.1"/>
+        <PackageVersion Include="JetBrains.Annotations" Version="2025.2.4"/>
+        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1"/>
+        <PackageVersion Include="xunit.v3" Version="3.2.2"/>
+        <PackageVersion Include="xunit.v3.extensibility.core" Version="3.2.2"/>
+        <PackageVersion Include="xunit.v3.assert" Version="3.2.2"/>
+        <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageVersion>
+        <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2"/>
+        <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.2"/>
+        <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.2"/>
+    </ItemGroup>
 </Project>

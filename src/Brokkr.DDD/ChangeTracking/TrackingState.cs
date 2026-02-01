@@ -26,7 +26,7 @@ public enum TrackingState
     /// Its current values are different from its original values.
     /// </summary>
     Modified = 3,
-    
+
     /// <summary>
     /// The instance exists and is tracked.
     /// It has been marked for deletion.

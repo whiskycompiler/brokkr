@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+    <ItemGroup>
+        <ProjectReference Include="..\..\Brokkr.DDD.FileSystem\Brokkr.DDD.FileSystem.csproj"/>
+    </ItemGroup>
+    
+</Project>

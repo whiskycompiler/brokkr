@@ -12,7 +12,7 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-        <VersionPrefix>0.2.0</VersionPrefix>
+        <VersionPrefix>0.3.0</VersionPrefix>
         <BuildTime>$([System.DateTime]::Now.ToString("yyMMddHHmm"))</BuildTime>
 
         <UseArtifactsOutput>true</UseArtifactsOutput>

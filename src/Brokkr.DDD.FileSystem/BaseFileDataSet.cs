@@ -114,28 +114,28 @@ public abstract class BaseFileDataSet<TEntity> : BaseDataSet<TEntity> where TEnt
     /// <param name="track">Indicates whether or not to track the retrieved entity.</param>
     /// <returns>The entity of type <typeparamref name="TEntity"/> if existing, otherwise null.</returns>
     /// <exception cref="EntityOperationException">Thrown if an error occurs while reading or deserializing the entity from the file.</exception>
-    protected TEntity? GetEntityFromFile(LocalPath filePath, bool track)
+    protected async Task<TEntity?> GetEntityFromFile(string filePath, bool track)
     {
-        if (File.Exists(filePath))
+        if (!File.Exists(filePath))
         {
-            try
-            {
-                var json = File.ReadAllText(filePath);
-                var entity = JsonSerializer.Deserialize<TEntity>(json);
-                if (entity != null && track)
-                {
-                    ChangeTracker.AddOrUpdateEntry(entity, TrackingState.Unchanged, this);
-                }
-
-                return entity;
-            }
-            catch (Exception e)
-            {
-                throw new EntityOperationException([], e, "Failed to read and deserialize entity from file.");
-            }
+            return null;
         }
 
-        return null;
+        try
+        {
+            var json = await File.ReadAllTextAsync(filePath);
+            var entity = JsonSerializer.Deserialize<TEntity>(json);
+            if (entity != null && track)
+            {
+                ChangeTracker.AddOrUpdateEntry(entity, TrackingState.Unchanged, this);
+            }
+
+            return entity;
+        }
+        catch (Exception e)
+        {
+            throw new EntityOperationException([], e, "Failed to read and deserialize entity from file.");
+        }
     }
 
     /// <summary>

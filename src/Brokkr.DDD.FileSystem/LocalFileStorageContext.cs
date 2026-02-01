@@ -28,7 +28,7 @@ public abstract class LocalFileStorageContext : IUnitOfWork
         var entriesToProcess = ChangeTracker.Entries
             .Where(e => e.State is not TrackingState.Detached and not TrackingState.Unchanged)
             .ToArray();
-        
+
         foreach (var entryGroup in entriesToProcess.GroupBy(e => e.DataSet))
         {
             if (entryGroup.Key is ITransactionalDataSet transactionalDataSet)
@@ -55,8 +55,8 @@ public abstract class LocalFileStorageContext : IUnitOfWork
                 }
             }
         }
-        
-        if (failedEntities.Count != 0)
+
+        if (failedEntities.Count == 0)
         {
             ChangeTracker.AcceptChanges();
             return;

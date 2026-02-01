@@ -25,7 +25,7 @@ public enum EntityOperationErrorCode
     /// Indicates that operation failed because the entity does not exist.
     /// </summary>
     EntityDoesNotExist = 3,
-    
+
     /// <summary>
     /// Inidicates that operation failed because of an error in the transaction unrelated to this entity itself.
     /// </summary>

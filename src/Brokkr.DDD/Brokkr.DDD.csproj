@@ -10,7 +10,7 @@
     <ItemGroup>
         <ProjectReference Include="..\Brokkr.Core\Brokkr.Core.csproj"/>
     </ItemGroup>
-    
+
     <ItemGroup>
         <None Include="README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>

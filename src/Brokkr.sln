@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{041D0440-E96C-4547-A7B2-047C1C508238}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,11 +29,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brokkr.DDD.UnitTests", "Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brokkr.Core.UnitTests", "Tests\Brokkr.Core.UnitTests\Brokkr.Core.UnitTests.csproj", "{DB4214F5-73B4-4277-A375-26B2BC9DB298}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brokkr.DDD.FileSystem.IntegrationTests", "Tests\Brokkr.DDD.FileSystem.IntegrationTests\Brokkr.DDD.FileSystem.IntegrationTests.csproj", "{CEFEAF86-39F7-4F73-821A-485869CA25A8}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Items", "Repository Items", "{0A8D858E-7CB0-4263-AF1F-9EDBE29F8198}"
 	ProjectSection(SolutionItems) = preProject
 		..\.editorconfig = ..\.editorconfig
 		..\README.md = ..\README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brokkr.Testing.XUnit", "Brokkr.Testing.XUnit\Brokkr.Testing.XUnit.csproj", "{45EAF34A-1A53-4414-9DAE-BE428AD52C43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +77,19 @@ Global
 		{DB4214F5-73B4-4277-A375-26B2BC9DB298}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB4214F5-73B4-4277-A375-26B2BC9DB298}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB4214F5-73B4-4277-A375-26B2BC9DB298}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEFEAF86-39F7-4F73-821A-485869CA25A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEFEAF86-39F7-4F73-821A-485869CA25A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEFEAF86-39F7-4F73-821A-485869CA25A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEFEAF86-39F7-4F73-821A-485869CA25A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45EAF34A-1A53-4414-9DAE-BE428AD52C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45EAF34A-1A53-4414-9DAE-BE428AD52C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45EAF34A-1A53-4414-9DAE-BE428AD52C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45EAF34A-1A53-4414-9DAE-BE428AD52C43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6B4DB1E9-75D2-40A8-BF5C-D0C270879DA2} = {904377E3-0FF3-4E0D-8CB3-93CA17C2E428}
 		{B240657E-234C-4B23-93F7-5950DDB26F9C} = {904377E3-0FF3-4E0D-8CB3-93CA17C2E428}
 		{DB4214F5-73B4-4277-A375-26B2BC9DB298} = {904377E3-0FF3-4E0D-8CB3-93CA17C2E428}
+		{CEFEAF86-39F7-4F73-821A-485869CA25A8} = {904377E3-0FF3-4E0D-8CB3-93CA17C2E428}
 	EndGlobalSection
 EndGlobal

@@ -59,8 +59,8 @@ public sealed class SingleJsonFileSingleEntityDataSet<TEntity> : BaseFileDataSet
     /// </summary>
     /// <param name="track">Flag to indicate if the entity should be tracked.</param>
     /// <returns>The entity.</returns>
-    public Task<TEntity?> GetEntity(bool track = false)
+    public async Task<TEntity?> GetEntity(bool track = false)
     {
-        return Task.FromResult(GetEntityFromFile(_jsonFilePath, track));
+        return await GetEntityFromFile(_jsonFilePath, track);
     }
 }

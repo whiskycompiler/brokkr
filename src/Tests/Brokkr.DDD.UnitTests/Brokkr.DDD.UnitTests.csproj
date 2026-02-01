@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Brokkr.DDD\Brokkr.DDD.csproj" />
-        <ProjectReference Include="..\..\Brokkr.Core\Brokkr.Core.csproj" />
+        <ProjectReference Include="..\..\Brokkr.DDD\Brokkr.DDD.csproj"/>
+        <ProjectReference Include="..\..\Brokkr.Core\Brokkr.Core.csproj"/>
     </ItemGroup>
 
 </Project>

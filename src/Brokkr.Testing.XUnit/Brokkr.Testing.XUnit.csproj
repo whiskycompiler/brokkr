@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Description>Brokkr library components to testing with xUnit.</Description>
+        <AssemblyName>Brokkr.Testing.XUnit</AssemblyName>
+        <PackageId>$(AssemblyName)</PackageId>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="xunit.v3.extensibility.core"/>
+        <PackageReference Include="xunit.v3.assert"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+</Project>

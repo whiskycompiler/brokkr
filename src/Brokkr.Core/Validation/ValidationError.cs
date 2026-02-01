@@ -75,31 +75,6 @@ public abstract record ValidationError
         var arrayHash = InnerErrors?.Aggregate(0, (acc, item) => HashCode.Combine(acc, item.GetHashCode())) ?? 0;
         return HashCode.Combine(ErrorCode, ErrorMessage, Identifier, arrayHash);
     }
-    
-    /// <summary>
-    /// Creates a new instance of <see cref="ValidationError{T}"/> with the specified parameters.
-    /// </summary>
-    /// <typeparam name="T">The enum type for the error code.</typeparam>
-    /// <param name="errorCode"><see cref="ValidationError{T}.ErrorCode"/>.</param>
-    /// <param name="errorMessage"><see cref="ErrorMessage"/></param>
-    /// <param name="identifier"><see cref="Identifier"/></param>
-    /// <param name="innerErrors"><see cref="InnerErrors"/></param>
-    /// <returns>A new instance of <see cref="ValidationError{T}"/>.</returns>
-    /// <remarks>
-    /// This is a shorthand to create strongly-typed validation errors without explicitly specifying the enum type.
-    /// </remarks>
-    public static ValidationError<T> Create<T>(
-        T errorCode,
-        string? errorMessage = null,
-        string? identifier = null,
-        ValidationError[]? innerErrors = null)
-        where T : Enum
-    {
-#pragma warning disable S1135 // suppressed until .NET 10 is available
-        // TODO: make this an extension method in .NET 10
-#pragma warning restore S1135
-        return new ValidationError<T>(errorCode, errorMessage, identifier, innerErrors);
-    }
 }
 
 /// <summary>

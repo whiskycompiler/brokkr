@@ -115,8 +115,17 @@ public sealed class SingleJsonFileEntityDataSet<TEntity, TId>
         if (_transactionEntries.Count != 0)
         {
             var entityOperationSuccesses = new List<TEntity>();
-            var fileData = await JsonSerializer.DeserializeAsync<Dictionary<TId, TEntity>>(_transactionFileStream);
-            fileData ??= new Dictionary<TId, TEntity>();
+            Dictionary<TId, TEntity>? fileData;
+            if (_transactionFileStream.Length == 0)
+            {
+                fileData = new Dictionary<TId, TEntity>();
+            }
+            else
+            {
+                fileData = new Dictionary<TId, TEntity>(await JsonSerializer
+                    .DeserializeAsyncEnumerable<KeyValuePair<TId, TEntity>>(_transactionFileStream)
+                    .ToArrayAsync());
+            }
 
             foreach (var transactionEntry in _transactionEntries)
             {
@@ -180,7 +189,7 @@ public sealed class SingleJsonFileEntityDataSet<TEntity, TId>
                 entityOperationSuccesses.Add(entity);
             }
 
-            if (entityOperationFailures.Count == 0)
+            if (entityOperationFailures.Count > 0)
             {
                 entityOperationFailures.AddRange(entityOperationSuccesses
                     .Select(entity => new EntityOperationFailure(
@@ -189,7 +198,11 @@ public sealed class SingleJsonFileEntityDataSet<TEntity, TId>
             }
             else
             {
-                await JsonSerializer.SerializeAsync(_transactionFileStream, fileData);
+                _transactionFileStream.Seek(0, SeekOrigin.Begin);
+                _transactionFileStream.SetLength(0);
+                await JsonSerializer.SerializeAsync<IEnumerable<KeyValuePair<TId, TEntity>>>(
+                    _transactionFileStream,
+                    fileData);
             }
         }
 

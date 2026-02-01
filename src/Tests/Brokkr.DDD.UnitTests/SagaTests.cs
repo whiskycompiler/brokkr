@@ -32,7 +32,7 @@ public sealed class SagaTests
         saga.AddOperation<Person>(_ => log.Add("op1"));
         saga.AddOperation<Person>(_ => log.Add("op2"));
 
-        await saga.SaveTrackedChanges();
+        await saga.SaveTrackedChanges(TestContext.Current.CancellationToken);
 
         Assert.Equal(new[] { "op1", "op2" }, log);
         // one save per operation
@@ -61,7 +61,7 @@ public sealed class SagaTests
             log.Add("op2");
         });
 
-        await saga.SaveTrackedChanges();
+        await saga.SaveTrackedChanges(TestContext.Current.CancellationToken);
 
         Assert.Equal(new[] { "op1", "op2" }, log);
         A.CallTo(() => uow.SaveTrackedChanges(A<CancellationToken>._)).MustHaveHappened(2, Times.Exactly);
@@ -86,7 +86,7 @@ public sealed class SagaTests
 
         saga.AddOperation<Person>(_ => log.Add("op3-sync"));
 
-        await saga.SaveTrackedChanges();
+        await saga.SaveTrackedChanges(TestContext.Current.CancellationToken);
 
         Assert.Equal(new[] { "op1-sync", "op2-async", "op3-sync" }, log);
         A.CallTo(() => uow.SaveTrackedChanges(A<CancellationToken>._)).MustHaveHappened(3, Times.Exactly);
@@ -106,7 +106,7 @@ public sealed class SagaTests
         saga.AddOperation<Person>(_ => throw new InvalidOperationException("fail2"), _ => log.Add("comp2"));
         saga.AddOperation<Person>(_ => log.Add("op3"), _ => log.Add("comp3"));
 
-        var ex = await Assert.ThrowsAsync<SagaFailedException>(async () => await saga.SaveTrackedChanges());
+        var ex = await Assert.ThrowsAsync<SagaFailedException>(async () => await saga.SaveTrackedChanges(TestContext.Current.CancellationToken));
 
         // Compensation should have been called only for successful prior operations, in reverse order
         Assert.Equal(new[] { "comp1" },
@@ -132,7 +132,7 @@ public sealed class SagaTests
         saga.AddOperation<Person>(_ => log.Add("op1"), _ => throw new ApplicationException("comp1-fail"));
         saga.AddOperation<Person>(_ => throw new InvalidOperationException("op2-fail"), _ => log.Add("comp2"));
 
-        var ex = await Assert.ThrowsAsync<SagaFailedException>(async () => await saga.SaveTrackedChanges());
+        var ex = await Assert.ThrowsAsync<SagaFailedException>(async () => await saga.SaveTrackedChanges(TestContext.Current.CancellationToken));
 
         Assert.Single(log);
         Assert.IsType<InvalidOperationException>(ex.InnerException);
@@ -156,7 +156,7 @@ public sealed class SagaTests
 
         saga.AddOperation<Person>(_ => throw new Exception("boom"));
 
-        var ex = await Assert.ThrowsAsync<SagaFailedException>(() => saga.SaveTrackedChanges());
+        var ex = await Assert.ThrowsAsync<SagaFailedException>(() => saga.SaveTrackedChanges(TestContext.Current.CancellationToken));
         Assert.NotNull(ex.InnerException);
         // Only compensation for op1 would run but it is null -> no extra calls beyond the first save
         A.CallTo(() => uow.SaveTrackedChanges(A<CancellationToken>._)).MustHaveHappened(2, Times.Exactly);
