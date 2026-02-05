@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/Repository Items/">
+    <File Path="../.editorconfig" />
+    <File Path="../README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <File Path="Tests/.editorconfig" />
+    <File Path="Tests/Directory.Build.props" />
+    <Project Path="Tests/Brokkr.Core.UnitTests/Brokkr.Core.UnitTests.csproj" />
+    <Project Path="Tests/Brokkr.DDD.FileSystem.IntegrationTests/Brokkr.DDD.FileSystem.IntegrationTests.csproj" />
+    <Project Path="Tests/Brokkr.DDD.UnitTests/Brokkr.DDD.UnitTests.csproj" />
+    <Project Path="Tests/Brokkr.Location.UnitTests/Brokkr.Location.UnitTests.csproj" />
+  </Folder>
+  <Project Path="Brokkr.Core/Brokkr.Core.csproj" />
+  <Project Path="Brokkr.DDD.EFCore/Brokkr.DDD.EFCore.csproj" />
+  <Project Path="Brokkr.DDD.FileSystem/Brokkr.DDD.FileSystem.csproj" />
+  <Project Path="Brokkr.DDD/Brokkr.DDD.csproj" />
+  <Project Path="Brokkr.Location/Brokkr.Location.csproj" />
+  <Project Path="Brokkr.OptionsHelper/Brokkr.OptionsHelper.csproj" />
+  <Project Path="Brokkr.Testing.XUnit/Brokkr.Testing.XUnit.csproj" />
+</Solution>

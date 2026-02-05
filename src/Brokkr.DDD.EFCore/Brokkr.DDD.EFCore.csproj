@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Description>Brokkr library components to use EF Core with Brokkr DDD componets.</Description>
+        <AssemblyName>Brokkr.DDD.EFCore</AssemblyName>
+        <PackageId>$(AssemblyName)</PackageId>
+        <PackageTags>ddd, saga pattern, uow, unit of work, repository, entity, change tracking, efcore</PackageTags>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <ProjectReference Include="..\Brokkr.DDD\Brokkr.DDD.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    </ItemGroup>
+
+</Project>
