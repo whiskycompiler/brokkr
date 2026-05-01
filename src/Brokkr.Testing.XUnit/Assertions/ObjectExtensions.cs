@@ -14,6 +14,8 @@ public static class ObjectExtensions
     /// <summary>
     /// Asserts that the value is not null.
     /// </summary>
+    /// <param name="value">The value to check.</param>
+    /// <param name="valueExpression">Ignore - filled by CallerArgumentExpression.</param>
     public static void AssertNotNull<T>(
         [NotNull] this T? value,
         [CallerArgumentExpression(nameof(value))] string valueExpression = "")
@@ -29,12 +31,18 @@ public static class ObjectExtensions
                  """);
         }
     }
-
+    
+    /// <summary>
+    /// Extension methods for nullable objects.
+    /// </summary>
+    /// <param name="value">The nullable value to check.</param>
+    /// <typeparam name="T">The type of the nullable value.</typeparam>
     extension<T>(T? value)
     {
         /// <summary>
         /// Asserts that the value is null.
         /// </summary>
+        /// <param name="valueExpression">Ignore - filled by CallerArgumentExpression.</param>
         public void AssertNull([CallerArgumentExpression(nameof(value))] string valueExpression = "")
         {
 #pragma warning disable S2955 // this is an excplicit null check
@@ -52,6 +60,9 @@ public static class ObjectExtensions
         /// <summary>
         /// Asserts that the value is equal to the specified value.
         /// </summary>
+        /// <param name="expected">The expected value.</param>
+        /// <param name="valueExpression">Ignore - filled by CallerArgumentExpression.</param>
+        /// <param name="expectedExpression">Ignore - filled by CallerArgumentExpression.</param>       
         public void AssertEqual(
             T? expected,
             [CallerArgumentExpression(nameof(value))] string valueExpression = "",
@@ -71,6 +82,9 @@ public static class ObjectExtensions
         /// <summary>
         /// Asserts that the value is not equal to the specified value.
         /// </summary>
+        /// <param name="expected">The expected value.</param>
+        /// <param name="valueExpression">Ignore - filled by CallerArgumentExpression.</param>
+        /// <param name="expectedExpression">Ignore - filled by CallerArgumentExpression.</param>
         public void AssertNotEqual(
             T? expected,
             [CallerArgumentExpression(nameof(value))] string valueExpression = "",

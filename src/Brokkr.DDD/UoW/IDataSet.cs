@@ -27,15 +27,18 @@ public interface IDataSet<in TEntity> : IDataSet where TEntity : class, ITrackab
     /// <summary>
     /// Flags the entity in the change tracking as new.
     /// </summary>
+    /// <param name="entity">The entity to flag.</param>   
     void AddEntity(TEntity entity);
 
     /// <summary>
     /// Flags the entity in the change tracking as updated.
     /// </summary>
+    /// <param name="entity">The entity to flag.</param> 
     void UpdateEntity(TEntity entity);
 
     /// <summary>
     /// Flags the entity in the change tracking as deleted. 
     /// </summary>
+    /// <param name="entity">The entity to flag.</param>
     void DeleteEntity(TEntity entity);
 }

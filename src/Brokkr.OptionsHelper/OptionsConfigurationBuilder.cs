@@ -19,8 +19,8 @@ public class OptionsConfigurationBuilder
     private readonly IConfiguration _configuration;
     private readonly IServiceCollection _serviceCollection;
 
-    private readonly HashSet<Type> _typesToConfigureWithValidation = new();
-    private readonly HashSet<Type> _typesToConfigureWithoutValidation = new();
+    private readonly HashSet<Type> _typesToConfigureWithValidation = [];
+    private readonly HashSet<Type> _typesToConfigureWithoutValidation = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="OptionsConfigurationBuilder"/> class.

@@ -38,6 +38,10 @@ public abstract record ValidationError
     /// <summary>
     /// Initializes a new instance of the <see cref="ValidationError"/> class.
     /// </summary>
+    /// <param name="errorCode">The error code that identifies the type of validation error.</param>
+    /// <param name="errorMessage">The human-readable error message describing the validation error.</param>
+    /// <param name="identifier">The identifier that specifies which field, property or etc caused the validation error.</param>
+    /// <param name="innerErrors">Collection of inner validation errors that are related to this error.</param>
     protected ValidationError(
         Enum errorCode,
         string? errorMessage = null,
@@ -96,6 +100,10 @@ public record ValidationError<T> : ValidationError where T : Enum
     /// <summary>
     /// Initializes a new instance of the <see cref="ValidationError{T}"/> class.
     /// </summary>
+    /// <param name="errorCode">The error code that identifies the type of validation error.</param>
+    /// <param name="errorMessage">The human-readable error message describing the validation error.</param>
+    /// <param name="identifier">The identifier that specifies which field, property or etc caused the validation error.</param>
+    /// <param name="innerErrors">Collection of inner validation errors that are related to this error.</param>
     public ValidationError(
         T errorCode,
         string? errorMessage = null,

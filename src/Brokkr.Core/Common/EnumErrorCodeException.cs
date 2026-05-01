@@ -18,6 +18,11 @@ public abstract class EnumErrorCodeException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="EnumErrorCodeException"/> class.
     /// </summary>
+    /// <param name="errorCode">The error code of the exception.</param>
+    /// <param name="message">The optional message of the exception.</param>
+    /// <param name="isCritical">
+    ///     Indicates whether the exception is a critical issue (e.g. not automatically recoverable).
+    /// </param>
     protected EnumErrorCodeException(
         Enum errorCode,
         string? message = null,
@@ -31,6 +36,12 @@ public abstract class EnumErrorCodeException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="EnumErrorCodeException"/> class.
     /// </summary>
+    /// <param name="errorCode">The error code of the exception.</param>
+    /// <param name="innerException">The inner exception.</param>
+    /// <param name="message">The optional message of the exception.</param>
+    /// <param name="isCritical">
+    ///     Indicates whether the exception is a critical issue (e.g. not automatically recoverable).
+    /// </param>
     protected EnumErrorCodeException(
         Enum errorCode,
         Exception innerException,
@@ -46,6 +57,7 @@ public abstract class EnumErrorCodeException : Exception
 /// <summary>
 /// Typed base exception using an error code based on an enum.
 /// </summary>
+/// <typeparam name="TEnum">The type of the enum used for the error codes.</typeparam>
 public abstract class EnumErrorCodeException<TEnum> : EnumErrorCodeException where TEnum : Enum
 {
     /// <summary>
@@ -60,6 +72,11 @@ public abstract class EnumErrorCodeException<TEnum> : EnumErrorCodeException whe
     /// <summary>
     /// Initializes a new instance of the <see cref="EnumErrorCodeException{TEnum}"/> class.
     /// </summary>
+    /// <param name="errorCode">The error code of the exception.</param>
+    /// <param name="message">The optional message of the exception.</param>
+    /// <param name="isCritical">
+    ///     Indicates whether the exception is a critical issue (e.g. not automatically recoverable).
+    /// </param>   
     protected EnumErrorCodeException(
         TEnum errorCode,
         string? message = null,
@@ -71,6 +88,12 @@ public abstract class EnumErrorCodeException<TEnum> : EnumErrorCodeException whe
     /// <summary>
     /// Initializes a new instance of the <see cref="EnumErrorCodeException{TEnum}"/> class.
     /// </summary>
+    /// <param name="errorCode">The error code of the exception.</param>
+    /// <param name="innerException">The inner exception.</param>
+    /// <param name="message">The optional message of the exception.</param>
+    /// <param name="isCritical">
+    ///     Indicates whether the exception is a critical issue (e.g. not automatically recoverable).
+    /// </param>  
     protected EnumErrorCodeException(
         TEnum errorCode,
         Exception innerException,

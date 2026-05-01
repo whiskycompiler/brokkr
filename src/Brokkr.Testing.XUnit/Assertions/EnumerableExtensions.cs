@@ -15,6 +15,7 @@ public static class EnumerableExtensions
         /// <summary>
         /// Asserts that the enumerable or string is empty.
         /// </summary>
+        /// <param name="valueExpression">Ignore - filled by CallerArgumentExpression.</param>
         public void AssertEmpty([CallerArgumentExpression(nameof(value))] string valueExpression = "")
         {
             if (value is null)
@@ -50,6 +51,7 @@ public static class EnumerableExtensions
         /// <summary>
         /// Asserts that the enumerable or string is not empty.
         /// </summary>
+        /// <param name="valueExpression">Ignore - filled by CallerArgumentExpression.</param>
         public void AssertNotEmpty([CallerArgumentExpression(nameof(value))] string valueExpression = "")
         {
             if (value is null)
@@ -84,6 +86,8 @@ public static class EnumerableExtensions
         /// <summary>
         /// Asserts that the enumerable has the exact specified length.
         /// </summary>
+        /// <param name="expectedLength">The expected length of the enumerable.</param>
+        /// <param name="valueExpression">Ignore - filled by CallerArgumentExpression.</param>
         public void AssertExactLength(
             int expectedLength,
             [CallerArgumentExpression(nameof(value))] string valueExpression = "")
@@ -121,6 +125,8 @@ public static class EnumerableExtensions
         /// <summary>
         /// Asserts that the enumerable contains the specified item.
         /// </summary>
+        /// <param name="item">The item to check for.</param>
+        /// <param name="valueExpression">Ignore - filled by CallerArgumentExpression.</param>
         public void AssertContains(
             T? item,
             [CallerArgumentExpression(nameof(value))] string valueExpression = "")

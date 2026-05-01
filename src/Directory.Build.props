@@ -12,7 +12,7 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-        <VersionPrefix>0.3.0</VersionPrefix>
+        <VersionPrefix>0.3.1</VersionPrefix>
         <BuildTime>$([System.DateTime]::Now.ToString("yyMMddHHmm"))</BuildTime>
 
         <UseArtifactsOutput>true</UseArtifactsOutput>
@@ -36,7 +36,6 @@
         <!--<PackageIcon>none_yet.png</PackageIcon>-->
     </PropertyGroup>
 
-
     <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
         <VersionSuffix>$(BuildTime)</VersionSuffix>
     </PropertyGroup>
@@ -44,4 +43,9 @@
     <Target Name="AfterPack" AfterTargets="Pack" Condition=" '$(Configuration)'=='Debug' And '$(IsPackable)'=='True'">
         <Exec Command="dotnet nuget push $(PackageOutputPath)*.nupkg --source local-feed"/>
     </Target>
+
+    <ItemGroup Condition="'$(IsPackable)' == 'true'">
+        <Content Include="$(MSBuildThisFileDirectory)/Pack-Extras/xml-unpack.targets" Pack="true" PackagePath="build/$(AssemblyName).targets"/>
+    </ItemGroup>
+    
 </Project>

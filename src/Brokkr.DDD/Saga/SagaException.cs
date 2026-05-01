@@ -21,6 +21,11 @@ public class SagaException : EnumErrorCodeException<SagaErrorCode>
     /// <summary>
     /// Initializes a new instance of the <see cref="SagaException"/> class.
     /// </summary>
+    /// <param name="errorCode">The error code of the exception.</param>
+    /// <param name="message">The optional message of the exception.</param>
+    /// <param name="isCritical">
+    ///     Indicates whether the exception is critical and should be handled with special attention.
+    /// </param>
     public SagaException(
         SagaErrorCode errorCode,
         string? message = null,
@@ -32,6 +37,12 @@ public class SagaException : EnumErrorCodeException<SagaErrorCode>
     /// <summary>
     /// Initializes a new instance of the <see cref="SagaException"/> class.
     /// </summary>
+    /// <param name="errorCode">The error code of the exception.</param>
+    /// <param name="innerException">The inner exception.</param>
+    /// <param name="message">The optional message of the exception.</param>
+    /// <param name="isCritical">
+    ///     Indicates whether the exception is critical and should be handled with special attention.
+    /// </param>
     public SagaException(
         SagaErrorCode errorCode,
         Exception innerException,

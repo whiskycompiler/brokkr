@@ -8,5 +8,6 @@ public interface IUnitOfWork
     /// <summary>
     /// Saves all tracked changes.
     /// </summary>
+    /// <param name="cancellationToken">Token used to cancel the operation.</param>
     Task SaveTrackedChanges(CancellationToken cancellationToken = default);
 }

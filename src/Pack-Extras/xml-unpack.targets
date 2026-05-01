@@ -1,0 +1,10 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup>
+        <XmlDocFiles Include="$(MSBuildThisFileDirectory)..\lib\**\*.xml" />
+    </ItemGroup>
+
+    <Target Name="ExtractPackageXmlDocs" AfterTargets="ResolveReferences" Condition="'$(LibraryXmlDocFolder)' != ''">
+        <MakeDir Directories="$(LibraryXmlDocFolder)" Condition="!Exists('$(LibraryXmlDocFolder)')" />
+        <Copy SourceFiles="@(XmlDocFiles)" DestinationFolder="$(LibraryXmlDocFolder)" SkipUnchangedFiles="true" />
+    </Target>
+</Project>

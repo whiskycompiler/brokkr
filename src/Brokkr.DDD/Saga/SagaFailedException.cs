@@ -13,6 +13,11 @@ public class SagaFailedException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="SagaFailedException"/> class.
     /// </summary>
+    /// <param name="message">The message of the exception.</param>
+    /// <param name="innerException">The inner exception.</param>
+    /// <param name="rollbackExceptions">
+    ///     Collection of exceptions that occurred trying to rollback the saga using compensating actions.
+    /// </param>
     public SagaFailedException(
         string message,
         Exception innerException,
@@ -25,6 +30,10 @@ public class SagaFailedException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="SagaFailedException"/> class.
     /// </summary>
+    /// <param name="innerException">The inner exception.</param>
+    /// <param name="rollbackExceptions">
+    ///     Collection of exceptions that occurred trying to rollback the saga using compensating actions.
+    /// </param>
     public SagaFailedException(
         Exception innerException,
         IReadOnlyCollection<Exception> rollbackExceptions)

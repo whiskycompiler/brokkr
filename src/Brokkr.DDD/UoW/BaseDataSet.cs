@@ -15,6 +15,7 @@ public abstract class BaseDataSet<TEntity> : IDataSet<TEntity> where TEntity : c
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseDataSet{TEntity}"/> class.
     /// </summary>
+    /// <param name="changeTracker">Change tracker to use for the data set.</param>
     protected BaseDataSet(ChangeTracker changeTracker)
     {
         ChangeTracker = changeTracker;

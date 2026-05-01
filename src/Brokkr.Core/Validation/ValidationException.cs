@@ -13,6 +13,8 @@ public class ValidationException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="ValidationException"/> class.
     /// </summary>
+    /// <param name="validationErrors">Collection of validation errors that caused the exception.</param>
+    /// <param name="message">The optional message of the exception.</param>
     public ValidationException(
         IReadOnlyCollection<ValidationError> validationErrors,
         string? message = null)

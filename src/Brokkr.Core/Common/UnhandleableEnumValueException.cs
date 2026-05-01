@@ -18,6 +18,8 @@ public sealed class UnhandleableEnumValueException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="UnhandleableEnumValueException"/> class.
     /// </summary>
+    /// <param name="enumValue">The unhandleable enum value.</param>
+    /// <param name="argumentName">Name of the invalid argument if there is one.</param>
     public UnhandleableEnumValueException(Enum? enumValue, string? argumentName = null)
         : base(BuildMessage(enumValue, argumentName))
     {
